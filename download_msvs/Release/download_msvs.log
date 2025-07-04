@@ -1,0 +1,6 @@
+﻿  download_msvs.cc
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 363 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  download_msvs.vcxproj -> C:\repos\download_msvs\Release\download_msvs.exe
