@@ -5,50 +5,48 @@
 
 #include <filesystem>
 #include <iostream>
-#include <string>
+#include <vector>
 
-#define MAJOR_VERSION 0
-#define MINOR_VERSION 0
-#define PATCH_VERSION 3
+#include "globals.h"
 
-constexpr int kMajorVersion = MAJOR_VERSION;
-constexpr int kMinorVersion = MINOR_VERSION;
-constexpr int kPatchVersion = PATCH_VERSION;
+int bad_handle_int;
+
+bool custom_url = false;
+bool nuke_files = false;
+bool get_2015 = false;
+bool get_2017 = false;
+bool get_2019 = false;
+bool get_2022 = false;
 
 void clearScreen();
 
 const std::string getVersionNumber();
-
-// Names of the files to output
-static const char* msvs_2017_name = "msvc_2017.exe";
-static const char* msvs_2017_chman_name = "msvc_2017_release.chman";
-static const char* msvs_2017_url = "aka.ms/vs/15/release/vs_community.exe";
-static const char* msvs_2017_chman_url = "https://aka.ms/vs/15/release/channel";
-static const char* msvs_2019_name = "msvc_2019.exe";
-static const char* msvs_2019_chman_name = "msvc_2017_release.chman";
-static const char* msvs_2019_url = "aka.ms/vs/16/release/vs_community.exe";
-static const char* msvs_2019_chman_url = "https://aka.ms/vs/16/release/channel";
-static const char* msvs_2022_name = "msvc_2022.exe";
-static const char* msvs_2022_chman_name = "msvc_2017_release.chman";
-static const char* msvs_2022_url = "aka.ms/vs/17/release/vs_community.exe";
-static const char* msvs_2022_chman_url = "https://aka.ms/vs/16/release/channel";
-
-constexpr long ON = 1L;
-constexpr long OFF = 0L;
-
-#ifndef CURL_STATICLIB
-#define CURL_STATICLIB
-#endif // CURL_STATICLIB
-
-#include "libcurl/curl.h"
-#include "libcurl/easy.h"
+const std::wstring getVersionNumberW();
 
 static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream);
 
+std::wstring stringToWString(std::string in_str);
+
+std::filesystem::path getPathFromName(const char* output_name);
+
 bool fileExists(const std::filesystem::path filepath);
+
+LPCWSTR charToLPCWSTR(const char* input_char);
+
+bool deleteFile(const char* nuke_name);
+
+bool nukeFiles();
 
 void downloadFiles(CURL* curl_handle, char* download_url, const char* output_name);
 
+void showHelp(char* exe);
+
+bool isDebug();
+
+void setIsDebug(bool is_debug_mode);
+
+int endCode(int status_code);
+
 int main(int argc, char* argv[], char *envp[]);
 
-#endif DOWNLOAD_MSVS_H_
+#endif // DOWNLOAD_MSVS_H_
