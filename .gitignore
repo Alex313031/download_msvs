@@ -1,19 +1,25 @@
 # OS Stuff
 .DS_Store
-.eslintcache
 .directory
 Thumbs.db
-thumbs.db
 
 # MSVS Stuff
-*.vcxproj.user
-*.tlog
-*.vs/
-/.vs/
+.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.env
 
 # Built Files
-/out/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Ll]ogs/
 *.obj
 *.exe
 *.pdb
 *.stamp
+*.tlog
